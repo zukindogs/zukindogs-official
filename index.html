@@ -455,10 +455,32 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
+        /* PC表示調整 */
         @media (min-width: 768px) {
             .modal-content {
                 grid-template-columns: 45% 55%;
-                overflow: hidden; 
+                overflow: hidden; /* コンテンツがはみ出さないように */
+                height: 80vh; /* 高さを画面に対して相対的に固定し、内部スクロールを有効化 */
+                max-height: 800px;
+            }
+            
+            .modal-image-area {
+                height: 100%; /* 親の高さに合わせる */
+                min-height: auto;
+                background-color: #e8e8e8;
+            }
+
+            .modal-details {
+                height: 100%; /* 親の高さに合わせる */
+                overflow-y: auto; /* 縦スクロールを有効化 */
+                padding: 40px; /* パディングを再定義 */
+            }
+
+            .modal-img {
+                width: 90%;
+                height: 90%;
+                object-fit: contain; /* 全体を表示 */
+                object-position: center; /* 中央に配置 */
             }
         }
 
@@ -501,13 +523,6 @@
             justify-content: center;
             background-image: radial-gradient(#ddd 1px, transparent 1px);
             background-size: 20px 20px;
-        }
-
-        @media (min-width: 768px) {
-            .modal-image-area {
-                height: auto;
-                min-height: 600px;
-            }
         }
 
         .modal-img {
@@ -744,15 +759,7 @@
         <h2 class="section-title">LINKS & SHOP</h2>
         <div class="links-grid">
             
-            <!-- REDBUBBLE (New) -->
-            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card" style="border-color: #e32636;">
-                <img src="redbubble_icon.png" alt="REDBUBBLE" class="shop-icon">
-                <div class="shop-info">
-                    <h4>REDBUBBLE / Global Shop</h4>
-                    <p>【Worldwide Shipping】Art & Goods for International Fans.</p>
-                </div>
-            </a>
-
+            <!-- 1. YouTube -->
             <a href="https://www.youtube.com/channel/UCmj58VeAZHYzR8xB1AbSCVg?sub_confirmation=1" target="_blank" class="shop-card">
                 <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6408bf16-964f-40b7-a5b7-f1c84f5199db.jpg" alt="YouTube" class="shop-icon">
                 <div class="shop-info">
@@ -761,7 +768,7 @@
                 </div>
             </a>
 
-            <!-- Instagram -->
+            <!-- 2. Instagram -->
             <a href="https://www.instagram.com/shinobi_dog/" target="_blank" class="shop-card">
                 <div class="shop-icon-svg" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
@@ -772,7 +779,7 @@
                 </div>
             </a>
 
-            <!-- X (Twitter) -->
+            <!-- 3. X (Twitter) -->
             <a href="https://x.com/zukindogs7" target="_blank" class="shop-card">
                 <div class="shop-icon-svg" style="background: #000;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -783,6 +790,7 @@
                 </div>
             </a>
             
+            <!-- 4. Tシャツトリニティ -->
             <a href="https://www.ttrinity.jp/shop/zukindogs/design" target="_blank" class="shop-card">
                 <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/d662f486-1cdc-4a96-a029-22c054a1ae16.png" alt="T-Shirt Trinity" class="shop-icon">
                 <div class="shop-info">
@@ -791,6 +799,7 @@
                 </div>
             </a>
 
+            <!-- 5. SUZURI -->
             <a href="https://suzuri.jp/ZUKINDOGS" target="_blank" class="shop-card">
                 <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6db393f1-7be6-490f-b146-0e10e5b9a533.png" alt="SUZURI" class="shop-icon">
                 <div class="shop-info">
@@ -799,7 +808,16 @@
                 </div>
             </a>
 
-            <!-- Contact (Email) -->
+            <!-- 6. REDBUBBLE -->
+            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card" style="border-color: #e32636;">
+                <img src="redbubble_icon.png" alt="REDBUBBLE" class="shop-icon">
+                <div class="shop-info">
+                    <h4>REDBUBBLE / Global Shop</h4>
+                    <p>【Worldwide Shipping】Art & Goods for International Fans.</p>
+                </div>
+            </a>
+
+            <!-- 7. Contact (Email) -->
             <a href="mailto:zukindogs@gmail.com" class="shop-card">
                 <img src="contact_icon.png" alt="Contact" class="shop-icon">
                 <div class="shop-info">
