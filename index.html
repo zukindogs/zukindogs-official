@@ -68,6 +68,31 @@
             opacity: 0.8;
         }
 
+        /* --- Animations --- */
+        /* ロゴのふわふわ浮遊アニメーション */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* スクロール時のふわっと表示用クラス */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 遅延表示用のクラス */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
         /* --- Hero Section --- */
         .hero {
             position: relative;
@@ -100,6 +125,13 @@
             object-fit: cover;
             /* 透明度を少し戻す（新しい画像が暗めなら数値を上げる） */
             opacity: 0.6; 
+            /* 背景画像もゆっくりズームする演出 */
+            animation: bgZoom 20s infinite alternate linear;
+        }
+
+        @keyframes bgZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
         .hero-content {
@@ -118,6 +150,8 @@
             margin-bottom: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
+            /* ふわふわアニメーション適用 */
+            animation: float 6s ease-in-out infinite;
         }
 
         .hero-title {
@@ -171,7 +205,7 @@
         .trademark-info {
             text-align: center;
             margin-bottom: 40px;
-            animation: fadeIn 1.2s ease;
+            /* アニメーションはJS制御に変更するためCSSアニメーションは削除 */
         }
         
         .tm-badge {
@@ -192,11 +226,6 @@
             color: var(--text-light);
             font-weight: 600;
             letter-spacing: 0.05em;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Section Titles --- */
@@ -269,14 +298,14 @@
             display: inline-block;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             transform: rotate(-1deg); /* 少し傾ける */
-            transition: transform 0.3s;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-width: 90%;
             border-radius: 2px;
         }
         
         .memory-photo-frame:hover {
             transform: rotate(0deg) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             z-index: 10;
         }
         
@@ -317,14 +346,14 @@
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弾むような動きに変更 */
             position: relative;
             border: 1px solid rgba(0,0,0,0.02);
         }
 
         .char-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(124, 153, 172, 0.2);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(124, 153, 172, 0.25);
         }
 
         .char-img-area {
@@ -414,13 +443,13 @@
             align-items: center;
             gap: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s, border-color 0.2s;
             border: 2px solid transparent;
         }
 
         .shop-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
             border-color: var(--point-color);
         }
 
@@ -740,13 +769,13 @@
     <div class="container">
 
         <!-- Trademark Notification -->
-        <div class="trademark-info">
+        <div class="trademark-info scroll-reveal">
             <span class="tm-badge">商標登録済</span>
             <p class="trademark-text">ZUKINDOGS® は日本国における登録商標です。<br>Official Registered Trademark.</p>
         </div>
 
         <!-- Story Section -->
-        <section class="story-section">
+        <section class="story-section scroll-reveal delay-100">
             <h2 class="story-heading">📖 Our Story</h2>
             
             <p>ZUKINDOGSのリーダー「やまと」は、最愛の柴犬・チロさんがシニア期に入った頃に誕生しました。老いていく愛犬の姿と、忍者の力強さを掛け合わせ、「完璧ではないけれど、一生懸命で愛おしい」唯一無二のキャラクターを目指しました。</p>
@@ -761,7 +790,7 @@
         </section>
 
         <!-- Memory Section (Added) -->
-        <section class="memory-section">
+        <section class="memory-section scroll-reveal delay-200">
             <div class="memory-photo-frame">
                 <img src="chiro_yamato.jpg" alt="チロさんとやまと" class="memory-img">
                 <div class="memory-caption">チロさんとやまと</div>
@@ -774,11 +803,11 @@
         </section>
 
         <!-- Characters Section -->
-        <h2 class="section-title">CHARACTERS</h2>
+        <h2 class="section-title scroll-reveal">CHARACTERS</h2>
         <div class="character-grid">
             
             <!-- やまと -->
-            <div class="char-card" onclick="openModal('yamato')">
+            <div class="char-card scroll-reveal" onclick="openModal('yamato')">
                 <div class="char-img-area">
                     <img src="yamato_stand_2.png" alt="やまと" class="char-img" style="object-fit: cover; object-position: top center;">
                 </div>
@@ -791,7 +820,7 @@
             </div>
 
             <!-- さくら -->
-            <div class="char-card" onclick="openModal('sakura')">
+            <div class="char-card scroll-reveal delay-100" onclick="openModal('sakura')">
                 <div class="char-img-area">
                     <img src="sakura_stand.png" alt="さくら" class="char-img" style="object-fit: cover; object-position: top center;">
                 </div>
@@ -804,7 +833,7 @@
             </div>
 
             <!-- フウガ -->
-            <div class="char-card" onclick="openModal('fuga')">
+            <div class="char-card scroll-reveal delay-200" onclick="openModal('fuga')">
                 <div class="char-img-area">
                     <img src="fuga_stand.png" alt="フウガ" class="char-img" style="object-fit: cover; object-position: top center;">
                 </div>
@@ -819,11 +848,11 @@
         </div>
 
         <!-- Links Section -->
-        <h2 class="section-title">LINKS & SHOP</h2>
+        <h2 class="section-title scroll-reveal">LINKS & SHOP</h2>
         <div class="links-grid">
             
             <!-- 1. YouTube -->
-            <a href="https://www.youtube.com/channel/UCmj58VeAZHYzR8xB1AbSCVg?sub_confirmation=1" target="_blank" class="shop-card">
+            <a href="https://www.youtube.com/channel/UCmj58VeAZHYzR8xB1AbSCVg?sub_confirmation=1" target="_blank" class="shop-card scroll-reveal">
                 <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6408bf16-964f-40b7-a5b7-f1c84f5199db.jpg" alt="YouTube" class="shop-icon">
                 <div class="shop-info">
                     <h4>YouTube</h4>
@@ -832,7 +861,7 @@
             </a>
 
             <!-- 2. Instagram -->
-            <a href="https://www.instagram.com/shinobi_dog/" target="_blank" class="shop-card">
+            <a href="https://www.instagram.com/shinobi_dog/" target="_blank" class="shop-card scroll-reveal delay-100">
                 <div class="shop-icon-svg" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </div>
@@ -843,7 +872,7 @@
             </a>
 
             <!-- 3. X (Twitter) -->
-            <a href="https://x.com/zukindogs7" target="_blank" class="shop-card">
+            <a href="https://x.com/zukindogs7" target="_blank" class="shop-card scroll-reveal delay-200">
                 <div class="shop-icon-svg" style="background: #000;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </div>
@@ -854,7 +883,7 @@
             </a>
             
             <!-- 4. Tシャツトリニティ -->
-            <a href="https://www.ttrinity.jp/shop/zukindogs/design" target="_blank" class="shop-card">
+            <a href="https://www.ttrinity.jp/shop/zukindogs/design" target="_blank" class="shop-card scroll-reveal delay-300">
                 <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/d662f486-1cdc-4a96-a029-22c054a1ae16.png" alt="T-Shirt Trinity" class="shop-icon">
                 <div class="shop-info">
                     <h4>Tシャツトリニティ</h4>
@@ -863,7 +892,7 @@
             </a>
 
             <!-- 5. SUZURI -->
-            <a href="https://suzuri.jp/ZUKINDOGS" target="_blank" class="shop-card">
+            <a href="https://suzuri.jp/ZUKINDOGS" target="_blank" class="shop-card scroll-reveal">
                 <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6db393f1-7be6-490f-b146-0e10e5b9a533.png" alt="SUZURI" class="shop-icon">
                 <div class="shop-info">
                     <h4>SUZURI</h4>
@@ -872,7 +901,7 @@
             </a>
 
             <!-- 6. REDBUBBLE -->
-            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card">
+            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card scroll-reveal delay-100">
                 <img src="redbubble_icon.png" alt="REDBUBBLE" class="shop-icon">
                 <div class="shop-info">
                     <h4>REDBUBBLE / Global Shop</h4>
@@ -881,7 +910,7 @@
             </a>
 
             <!-- 7. Contact (Email) -->
-            <a href="mailto:zukindogs@gmail.com" class="shop-card">
+            <a href="mailto:zukindogs@gmail.com" class="shop-card scroll-reveal delay-200">
                 <img src="contact_icon.png" alt="Contact" class="shop-icon">
                 <div class="shop-info">
                     <h4>Contact</h4>
@@ -1020,6 +1049,23 @@
             if (e.target === modal) {
                 closeModal();
             }
+        });
+
+        // スクロール時のアニメーション監視
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px" // 少し手前で発火させる
+            });
+
+            const hiddenElements = document.querySelectorAll('.scroll-reveal');
+            hiddenElements.forEach((el) => observer.observe(el));
         });
     </script>
 </body>
