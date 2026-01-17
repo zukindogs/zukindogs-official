@@ -227,7 +227,7 @@
             padding: 50px;
             border-radius: 24px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.05);
-            margin-bottom: 80px;
+            margin-bottom: 40px; /* マージン調整 */
             border: 1px solid rgba(255,255,255,0.8);
             text-align: center;
         }
@@ -255,6 +255,52 @@
             color: #777;
             margin-top: -0.5em; /* 日本語との間隔を調整 */
             margin-bottom: 2em !important;
+        }
+
+        /* --- Memory Photo --- */
+        .memory-section {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .memory-photo-frame {
+            background: #fff;
+            padding: 15px 15px 50px 15px; /* ポラロイド風の下余白 */
+            display: inline-block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: rotate(-1deg); /* 少し傾ける */
+            transition: transform 0.3s;
+            max-width: 90%;
+            border-radius: 2px;
+        }
+        
+        .memory-photo-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+        
+        .memory-img {
+            display: block;
+            max-width: 100%;
+            width: 500px; /* サイズ調整 */
+            height: auto;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .memory-caption {
+            font-family: var(--font-maru);
+            margin-top: 15px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .memory-sub {
+            font-family: var(--font-en);
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 5px;
         }
 
         /* --- Character Grid --- */
@@ -708,6 +754,19 @@
             
             <p>2024年にチロさんは旅立ちましたが、彼女から教わった「健気な美しさ」は、この忍犬たちの中に永遠に息づいています。</p>
             <p class="text-en">Although Chiro-san passed away in 2024, her legacy of "devoted beauty" lives on in these Ninja Dogs.</p>
+        </section>
+
+        <!-- Memory Section (Added) -->
+        <section class="memory-section">
+            <div class="memory-photo-frame">
+                <img src="chiro_yamato.jpg" alt="チロさんとやまと" class="memory-img">
+                <div class="memory-caption">チロさんとやまと</div>
+                <div class="memory-sub">Chiro & Yamato - Precious Memory</div>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light); line-height: 1.8;">
+                やまとの鼻の中には、チロさんのふかふかの毛が入っています。<br>
+                <span class="text-en" style="margin:0;">Yamato's nose is stuffed with Chiro-san's fluffy fur.</span>
+            </p>
         </section>
 
         <!-- Characters Section -->
