@@ -173,22 +173,36 @@
             opacity: 0.9;
         }
 
-        .hero-tagline {
+        /* メインキャッチコピーのスタイル */
+        .hero-main-copy {
             font-family: var(--font-maru);
-            font-size: 1.1rem;
-            margin-top: 15px;
+            font-size: 1.8rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
             font-weight: 700;
             letter-spacing: 0.05em;
             color: #ffffff;
+            line-height: 1.4;
+        }
+
+        /* サブコピーのスタイル */
+        .hero-sub-copy {
+            font-family: var(--font-jp);
+            font-size: 1rem;
+            margin-top: 5px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            opacity: 0.9;
         }
 
         .hero-tagline-en {
             font-family: var(--font-en);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: 5px;
-            font-weight: 600;
+            font-weight: 400;
             letter-spacing: 0.05em;
-            opacity: 1;
+            opacity: 0.8;
             color: #ffffff;
         }
 
@@ -739,6 +753,8 @@
         /* スマホ向けの微調整 */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
+            .hero-main-copy { font-size: 1.4rem; margin-top: 15px; } /* スマホでのキャッチコピーサイズ */
+            .hero-sub-copy { font-size: 0.9rem; } /* スマホでのサブコピーサイズ */
             .section-title { font-size: 1.8rem; margin: 60px 0 40px; }
             .modal-name { font-size: 1.8rem; }
             .modal-details { padding: 30px 20px; }
@@ -761,7 +777,8 @@
         <div class="hero-content">
             <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/ed295819-fdbb-4f98-9663-d46514f6842b.png" alt="ZUKINDOGS Logo" class="hero-logo">
             <h1 class="hero-title">ZUKINDOGS<span class="tm-mark-hero">®</span></h1>
-            <p class="hero-tagline">遊び心 × やさしさ × ちょっと誇らしい犬たち</p>
+            <p class="hero-main-copy">守ることしかできない、やさしい忍犬たち</p>
+            <p class="hero-sub-copy">遊び心 × やさしさ × ちょっと誇らしい犬たち</p>
             <p class="hero-tagline-en">Playful x Gentle x Proud Dogs</p>
         </div>
     </header>
