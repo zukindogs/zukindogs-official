@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZUKINDOGS | 忍犬達の物語</title>
+    <title>ZUKINDOGS® | 忍犬達の物語</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
             --accent-blue: #7C99AC;
             --accent-green: #8DA47E;
             --point-color: #D8A373;
-            --modal-overlay: rgba(30, 30, 30, 0.85); /* 少し明るくして圧迫感を減らす */
+            --modal-overlay: rgba(30, 30, 30, 0.85);
             --font-jp: "Noto Sans JP", sans-serif;
             --font-en: "Montserrat", sans-serif;
             --font-maru: "Zen Maru Gothic", sans-serif;
@@ -34,19 +34,18 @@
             padding: 0;
             color: var(--text-color);
             font-family: var(--font-jp);
-            line-height: 1.9; /* 行間を少し広げて読みやすく */
+            line-height: 1.9;
             -webkit-font-smoothing: antialiased;
             
             /* ▼ 背景画像設定 */
-            background-image: url('site_bg.png'); /* 画像を指定 */
-            background-repeat: repeat; /* パターンとして繰り返す */
-            background-size: 400px; /* パターンのサイズ感（画像の密度に合わせて調整可） */
-            background-attachment: fixed; /* スクロールしても背景を固定 */
+            background-image: url('site_bg.png');
+            background-repeat: repeat;
+            background-size: 400px;
+            background-attachment: fixed;
             background-position: center top;
-            background-color: var(--bg-color); /* 画像がない時のフォールバック */
+            background-color: var(--bg-color);
         }
 
-        /* 背景画像の上に薄い膜を張って、文字を読みやすくする */
         body::before {
             content: '';
             position: fixed;
@@ -54,8 +53,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(250, 247, 242, 0.85); /* 生成り色を85%透過で重ねる */
-            z-index: -1; /* コンテンツより後ろ、背景画像より前 */
+            background-color: rgba(250, 247, 242, 0.85);
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -73,17 +72,18 @@
         .hero {
             position: relative;
             width: 100%;
-            height: 70vh; /* 少し高さを抑えてコンテンツを見えやすく */
-            min-height: 450px;
+            height: 70vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             color: #fff;
             text-align: center;
-            /* 影をつけて下のコンテンツとの境界をはっきりさせる */
             box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
-            margin-bottom: 60px; /* コンテナとの距離を確保 */
+            margin-bottom: 60px;
+            /* 背景画像の下地を黒にしてコントラストを高める */
+            background-color: #000; 
         }
 
         .hero-bg-image {
@@ -93,7 +93,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.9; /* 少しだけ明るく */
+            /* 透明度を下げて背景を暗くし、文字を目立たせる */
+            opacity: 0.5; 
             z-index: 0;
         }
 
@@ -101,8 +102,8 @@
             position: relative;
             z-index: 1;
             padding: 20px;
-            /* 文字の視認性を高めるためのドロップシャドウ強化 */
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            /* 文字の影を濃くして視認性を向上 */
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
         }
 
         .hero-logo {
@@ -111,33 +112,88 @@
             border-radius: 50%;
             border: 4px solid rgba(255,255,255,0.9);
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
         }
 
         .hero-title {
             font-family: var(--font-en);
-            font-size: 3.5rem; /* 少し大きく */
+            font-size: 3.5rem;
             font-weight: 700;
             margin: 0;
             letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: flex-start;
+            /* 文字色を真っ白に指定（念のため） */
+            color: #ffffff;
+        }
+        
+        .tm-mark-hero {
+            font-size: 1rem;
+            margin-left: 5px;
+            margin-top: 10px;
+            font-weight: 400;
+            opacity: 0.9;
         }
 
         .hero-tagline {
             font-family: var(--font-maru);
             font-size: 1.1rem;
             margin-top: 15px;
-            font-weight: 500;
+            font-weight: 700; /* 太く変更 */
             letter-spacing: 0.05em;
+            color: #ffffff;
+        }
+
+        .hero-tagline-en {
+            font-family: var(--font-en);
+            font-size: 0.9rem;
+            margin-top: 5px;
+            font-weight: 600; /* 太く変更 */
+            letter-spacing: 0.05em;
+            opacity: 1; /* 透過なしに変更 */
+            color: #ffffff;
         }
 
         /* --- Container --- */
         .container {
-            max-width: 1000px; /* 横幅を少し引き締める */
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px 80px;
             position: relative;
             z-index: 2;
+        }
+
+        /* --- Trademark Info Section --- */
+        .trademark-info {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1.2s ease;
+        }
+        
+        .tm-badge {
+            display: inline-block;
+            background-color: var(--point-color);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(216, 163, 115, 0.4);
+        }
+        
+        .trademark-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- Section Titles --- */
@@ -163,11 +219,11 @@
 
         /* --- Story Section --- */
         .story-section {
-            background: rgba(255, 255, 255, 0.9); /* 少し透過させて背景を感じさせる */
-            backdrop-filter: blur(10px); /* すりガラス効果 */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             padding: 50px;
             border-radius: 24px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.05); /* ふんわり浮く影 */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
             margin-bottom: 80px;
             border: 1px solid rgba(255,255,255,0.8);
             text-align: center;
@@ -186,15 +242,23 @@
         .story-section p {
             max-width: 800px;
             margin: 0 auto 1.5em;
-            text-align: justify; /* 日本語を揃える */
-            text-align-last: center; /* 最後の行は中央寄せ */
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        .text-en {
+            font-family: var(--font-en);
+            font-size: 0.9em;
+            color: #777;
+            margin-top: -0.5em; /* 日本語との間隔を調整 */
+            margin-bottom: 2em !important;
         }
 
         /* --- Character Grid --- */
         .character-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px; /* 間隔を広げてゆったりと */
+            gap: 40px;
             margin-bottom: 80px;
         }
 
@@ -204,14 +268,14 @@
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* バウンドするような動き */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             border: 1px solid rgba(0,0,0,0.02);
         }
 
         .char-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(124, 153, 172, 0.2); /* 影に少し色を入れる */
+            box-shadow: 0 20px 40px rgba(124, 153, 172, 0.2);
         }
 
         .char-img-area {
@@ -221,7 +285,6 @@
             position: relative;
         }
         
-        /* カード内の画像に和紙っぽいテクスチャをうっすら重ねる演出 */
         .char-img-area::after {
             content: '';
             position: absolute;
@@ -289,7 +352,7 @@
         /* --- Links & Shop Grid --- */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 少しカード幅を広く */
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 24px;
             margin-bottom: 100px;
         }
@@ -303,13 +366,13 @@
             gap: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-            border: 2px solid transparent; /* 枠線を透明で準備 */
+            border: 2px solid transparent;
         }
 
         .shop-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border-color: var(--point-color); /* ホバー時に枠線を表示 */
+            border-color: var(--point-color);
         }
 
         .shop-icon {
@@ -366,7 +429,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            backdrop-filter: blur(8px); /* 背景をぼかす */
+            backdrop-filter: blur(8px);
         }
 
         .modal-overlay.active {
@@ -433,7 +496,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            /* パターン背景を追加しても可愛い */
             background-image: radial-gradient(#ddd 1px, transparent 1px);
             background-size: 20px 20px;
         }
@@ -454,7 +516,6 @@
             transition: transform 0.3s;
         }
         
-        /* 画像に少し動きをつける */
         .modal-content:hover .modal-img {
             transform: scale(1.02);
         }
@@ -499,7 +560,6 @@
             gap: 8px;
         }
         
-        /* ラベルの左に丸いアイコン的な装飾 */
         .modal-label::before {
             content: '';
             display: block;
@@ -514,9 +574,19 @@
             line-height: 1.8;
             color: var(--text-light);
             white-space: pre-wrap;
-            background: rgba(255,255,255,0.5); /* 文字背景にうっすら白を敷く */
+            background: rgba(255,255,255,0.5);
             padding: 15px;
             border-radius: 12px;
+        }
+
+        .modal-text-en {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #777;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ccc;
+            font-family: var(--font-en);
         }
 
         .modal-btn {
@@ -595,18 +665,29 @@
 
         <div class="hero-content">
             <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/ed295819-fdbb-4f98-9663-d46514f6842b.png" alt="ZUKINDOGS Logo" class="hero-logo">
-            <h1 class="hero-title">ZUKINDOGS</h1>
+            <h1 class="hero-title">ZUKINDOGS<span class="tm-mark-hero">®</span></h1>
             <p class="hero-tagline">遊び心 × やさしさ × ちょっと誇らしい犬たち</p>
+            <p class="hero-tagline-en">Playful x Gentle x Proud Dogs</p>
         </div>
     </header>
 
     <div class="container">
 
+        <!-- Trademark Notification -->
+        <div class="trademark-info">
+            <span class="tm-badge">商標登録済</span>
+            <p class="trademark-text">ZUKINDOGS® は日本国における登録商標です。<br>Official Registered Trademark.</p>
+        </div>
+
         <!-- Story Section -->
         <section class="story-section">
             <h2 class="story-heading">📖 Our Story</h2>
+            
             <p>ZUKINDOGSのリーダー「やまと」は、最愛の柴犬・チロさんがシニア期に入った頃に誕生しました。老いていく愛犬の姿と、忍者の力強さを掛け合わせ、「完璧ではないけれど、一生懸命で愛おしい」唯一無二のキャラクターを目指しました。</p>
+            <p class="text-en">The leader of ZUKINDOGS, "YAMATO," was born when my beloved Shiba Inu, Chiro-san, entered her senior years. Inspired by her grace and the strength of a Ninja, I created these characters to celebrate the "earnest and adorable" spirit of doing one's best.</p>
+            
             <p>2024年にチロさんは旅立ちましたが、彼女から教わった「健気な美しさ」は、この忍犬たちの中に永遠に息づいています。</p>
+            <p class="text-en">Although Chiro-san passed away in 2024, her legacy of "devoted beauty" lives on in these Ninja Dogs.</p>
         </section>
 
         <!-- Characters Section -->
@@ -657,11 +738,21 @@
         <!-- Links Section -->
         <h2 class="section-title">LINKS & SHOP</h2>
         <div class="links-grid">
+            
+            <!-- REDBUBBLE (New) -->
+            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card" style="border-color: #e32636;">
+                <img src="redbubble_icon.png" alt="REDBUBBLE" class="shop-icon">
+                <div class="shop-info">
+                    <h4>REDBUBBLE / Global Shop</h4>
+                    <p>【Worldwide Shipping】Art & Goods for International Fans.</p>
+                </div>
+            </a>
+
             <a href="https://www.youtube.com/channel/UCmj58VeAZHYzR8xB1AbSCVg?sub_confirmation=1" target="_blank" class="shop-card">
                 <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6408bf16-964f-40b7-a5b7-f1c84f5199db.jpg" alt="YouTube" class="shop-icon">
                 <div class="shop-info">
                     <h4>YouTube</h4>
-                    <p>白柴こと日記</p>
+                    <p>白柴こと日記 / Shiba Inu Koto</p>
                 </div>
             </a>
 
@@ -691,7 +782,7 @@
                 <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/d662f486-1cdc-4a96-a029-22c054a1ae16.png" alt="T-Shirt Trinity" class="shop-icon">
                 <div class="shop-info">
                     <h4>Tシャツトリニティ</h4>
-                    <p>公式グッズ (国内)</p>
+                    <p>公式グッズ (国内/JP)</p>
                 </div>
             </a>
 
@@ -699,7 +790,7 @@
                 <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6db393f1-7be6-490f-b146-0e10e5b9a533.png" alt="SUZURI" class="shop-icon">
                 <div class="shop-info">
                     <h4>SUZURI</h4>
-                    <p>雑貨・小物</p>
+                    <p>雑貨・小物 (JP)</p>
                 </div>
             </a>
 
@@ -708,7 +799,7 @@
                 <img src="contact_icon.png" alt="Contact" class="shop-icon">
                 <div class="shop-info">
                     <h4>Contact</h4>
-                    <p>お問い合わせ</p>
+                    <p>お問い合わせ / Inquiry</p>
                 </div>
             </a>
 
@@ -733,29 +824,29 @@
                 <h3 id="m_name" class="modal-name">Name</h3>
                 
                 <div class="modal-desc-block">
-                    <span class="modal-label">性格</span>
-                    <p id="m_desc" class="modal-text">ここに詳細な説明が入ります。</p>
+                    <span class="modal-label">性格 / Personality</span>
+                    <div id="m_desc" class="modal-text"></div>
                 </div>
 
                 <div class="modal-desc-block">
-                    <span class="modal-label">ストーリー</span>
-                    <p id="m_story" class="modal-text">ここにストーリーが入ります。</p>
+                    <span class="modal-label">ストーリー / Story</span>
+                    <div id="m_story" class="modal-text"></div>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                     <div class="modal-desc-block">
-                        <span class="modal-label">好きなもの</span>
-                        <p id="m_likes" class="modal-text">未設定</p>
+                        <span class="modal-label">好きなもの / Likes</span>
+                        <div id="m_likes" class="modal-text"></div>
                     </div>
                     <div class="modal-desc-block">
-                        <span class="modal-label">苦手なもの</span>
-                        <p id="m_dislikes" class="modal-text">未設定</p>
+                        <span class="modal-label">苦手なもの / Dislikes</span>
+                        <div id="m_dislikes" class="modal-text"></div>
                     </div>
                 </div>
 
-                <a id="m_link" href="#" target="_blank" class="modal-btn">このキャラクターのグッズを見る</a>
+                <a id="m_link" href="#" target="_blank" class="modal-btn">このキャラクターのグッズを見る<br><span style="font-size:0.8em; font-weight:400;">View Goods</span></a>
                 
-                <button onclick="closeModal()" class="modal-back-btn">× ホームに戻る</button>
+                <button onclick="closeModal()" class="modal-back-btn">× ホームに戻る / Close</button>
             </div>
         </div>
     </div>
@@ -764,31 +855,43 @@
         const charData = {
             yamato: {
                 name: "忍犬やまと (YAMATO)",
-                role: "リーダー",
-                desc: "非常に責任感が強く、常に仲間の先頭に立つ頼れるリーダー。\nしかし、大好物のお団子を目の前にすると、それまでの威厳が嘘のように消え、目がキラキラになってしまう愛嬌のある一面も。",
-                story: "チロさんが最初に保護し、深い愛情を注いだのがやまとでした。チロさんが旅立つ時、彼は「みんなを頼むよ」と託された気がしています。\n今でも、チロさんが愛用していたハンカチーフを見つけると、こっそりその横で眠り、リーダーとしての勇気をチャージしています。",
-                likes: "みたらし団子、朝日、チロさんと歩いた散歩道",
-                dislikes: "雷（実はかなりビビリ）、仲間の涙",
+                role: "Leader",
+                desc: `非常に責任感が強く、常に仲間の先頭に立つ頼れるリーダー。\nしかし、大好物のお団子を目の前にすると、それまでの威厳が嘘のように消え、目がキラキラになってしまう愛嬌のある一面も。
+                <div class="modal-text-en">A reliable leader with a strong sense of responsibility, always standing at the forefront. However, his dignity vanishes instantly when he sees his favorite "Dango" dumplings, revealing a charming, playful side.</div>`,
+                story: `チロさんが最初に保護し、深い愛情を注いだのがやまとでした。チロさんが旅立つ時、彼は「みんなを頼むよ」と託された気がしています。\n今でも、チロさんが愛用していたハンカチーフを見つけると、こっそりその横で眠り、リーダーとしての勇気をチャージしています。
+                <div class="modal-text-en">Chiro-san rescued him first and poured her deep love into him. When she passed away, he felt entrusted with the mission to "take care of everyone." Even now, when he finds Chiro-san's handkerchief, he secretly sleeps next to it to recharge his courage as a leader.</div>`,
+                likes: `みたらし団子、朝日、チロさんと歩いた散歩道
+                <div class="modal-text-en">Mitarashi Dango, Morning Sun, Walking paths with Chiro-san</div>`,
+                dislikes: `雷（実はかなりビビリ）、仲間の涙
+                <div class="modal-text-en">Thunder (actually quite scared), Tears of friends</div>`,
                 img: "yamato_stand_2.png",
                 link: "https://www.ttrinity.jp/product/11819827#888"
             },
             sakura: {
                 name: "忍犬さくら (SAKURA)",
-                role: "輝く心",
-                desc: "太陽のように明るく、その場にいるだけで空気がパッと華やぐチームのムードメーカー。\n天真爛漫で少しおっちょこちょいな一面もありますが、他人の心の痛みに敏感で、落ち込んでいる仲間にはそっと寄り添う優しさを持っています。",
-                story: "春の嵐の翌日、満開の桜の木の下で震えていたところを、やまととチロさんに見つけられました。最初は怯えていましたが、チロさんがくれた温かいミルクとやまとの励ましで心を開きました。\n「みんなを笑顔にする」ことが、自分を救ってくれた二人への恩返しだと思っています。",
-                likes: "団扇、歌を歌うこと、日向ぼっこ",
-                dislikes: "雨の日（外で遊べないから）、喧嘩",
+                role: "The Bright Soul",
+                desc: `太陽のように明るく、その場にいるだけで空気がパッと華やぐチームのムードメーカー。\n天真爛漫で少しおっちょこちょいな一面もありますが、他人の心の痛みに敏感で、落ち込んでいる仲間にはそっと寄り添う優しさを持っています。
+                <div class="modal-text-en">A mood maker who brightens the air just by being there, like the sun. Innocent and a bit clumsy, but sensitive to others' pain, she has the kindness to gently snuggle up to depressed friends.</div>`,
+                story: `春の嵐の翌日、満開の桜の木の下で震えていたところを、やまととチロさんに見つけられました。最初は怯えていましたが、チロさんがくれた温かいミルクとやまとの励ましで心を開きました。\n「みんなを笑顔にする」ことが、自分を救ってくれた二人への恩返しだと思っています。
+                <div class="modal-text-en">Found shivering under a cherry blossom tree after a spring storm. Initially scared, she opened her heart thanks to warm milk from Chiro-san and encouragement from Yamato. She wants to make everyone smile to repay their kindness.</div>`,
+                likes: `団扇、歌を歌うこと、日向ぼっこ
+                <div class="modal-text-en">Uchiwa (Fan), Singing, Sunbathing</div>`,
+                dislikes: `雨の日（外で遊べないから）、喧嘩
+                <div class="modal-text-en">Rainy days (can't play outside), Fighting</div>`,
                 img: "sakura_stand.png", 
                 link: "https://www.ttrinity.jp/product/11820333#699"
             },
             fuga: {
                 name: "忍犬フウガ (FUGA)",
-                role: "守護神",
-                desc: "無口でぶっきらぼうに見えますが、実は誰よりも繊細で優しい心の持ち主。\n言葉よりも行動で示すタイプで、力仕事や夜回りは進んで引き受けます。",
-                story: "かつては山奥の神社を守る「野良の番犬」として孤独に生きていました。ある冬の日、凍えていた彼にチロさんが自分のマフラーを巻いてくれたことがきっかけで、影から一行を見守るようになりました。\nやまとに熱烈にスカウトされ、今ではZUKINDOGSの「盾」として仲間を命がけで守っています。",
-                likes: "お料理（実は隠れた名シェフ）、静かな森、小さい生き物",
-                dislikes: "暑さ（すぐバテる）、自分を褒められること（照れて逃げる）",
+                role: "The Guardian",
+                desc: `無口でぶっきらぼうに見えますが、実は誰よりも繊細で優しい心の持ち主。\n言葉よりも行動で示すタイプで、力仕事や夜回りは進んで引き受けます。
+                <div class="modal-text-en">Looks quiet and blunt, but has a delicate and kind heart. He shows his feelings through actions rather than words, and willingly takes on physical work and night patrols.</div>`,
+                story: `かつては山奥の神社を守る「野良の番犬」として孤独に生きていました。ある冬の日、凍えていた彼にチロさんが自分のマフラーを巻いてくれたことがきっかけで、影から一行を見守るようになりました。\nやまとに熱烈にスカウトされ、今ではZUKINDOGSの「盾」として仲間を命がけで守っています。
+                <div class="modal-text-en">He used to live alone guarding a shrine deep in the mountains. One winter day, Chiro-san wrapped her scarf around him when he was freezing. Since then, he watched over them from the shadows until Yamato recruited him. Now he protects his friends as their "Shield."</div>`,
+                likes: `お料理（実は隠れた名シェフ）、静かな森、小さい生き物
+                <div class="modal-text-en">Cooking (Hidden Chef), Quiet Forest, Small Animals</div>`,
+                dislikes: `暑さ（すぐバテる）、自分を褒められること（照れて逃げる）
+                <div class="modal-text-en">Heat (gets tired easily), Being praised (shy)</div>`,
                 img: "fuga_stand.png",
                 link: "https://www.ttrinity.jp/shop/zukindogs/design?from_shop_page=1&latest_date_approval=2025-05-07&p=1&shop_id=48257"
             }
@@ -811,10 +914,11 @@
             m_img.src = data.img;
             m_role.textContent = data.role;
             m_name.textContent = data.name;
-            m_desc.textContent = data.desc;
-            m_story.textContent = data.story;
-            m_likes.textContent = data.likes;
-            m_dislikes.textContent = data.dislikes;
+            m_desc.innerHTML = data.desc;
+            m_story.innerHTML = data.story;
+            m_likes.innerHTML = data.likes;
+            m_dislikes.innerHTML = data.dislikes;
+            m_link.innerHTML = 'このキャラクターのグッズを見る<br><span style="font-size:0.8em; font-weight:400;">View Goods</span>';
             m_link.href = data.link;
 
             modal.classList.add('active');
