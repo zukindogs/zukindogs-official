@@ -754,6 +754,10 @@
             
             <p>2024年にチロさんは旅立ちましたが、彼女から教わった「健気な美しさ」は、この忍犬たちの中に永遠に息づいています。</p>
             <p class="text-en">Although Chiro-san passed away in 2024, her legacy of "devoted beauty" lives on in these Ninja Dogs.</p>
+
+            <!-- 追加テキスト -->
+            <p>2025年、新たな家族として白柴の「こと」を迎えました。チロさんが繋いでくれた縁を大切に、これからも「優しき忍び」たちの物語を世界へ届けていきます。</p>
+            <p class="text-en">In 2025, we welcomed a new family member, "KOTO" (White Shiba). Cherishing the bond Chiro-san left behind, we continue to share the tale of these "Gentle Ninjas" with the world.</p>
         </section>
 
         <!-- Memory Section (Added) -->
@@ -808,6 +812,20 @@
                     <div class="char-role">The Guardian</div>
                     <h3 class="char-name">忍犬フウガ</h3>
                     <p class="char-catch">守護神：優しき力</p>
+                    <span class="btn-more">詳しく見る</span>
+                </div>
+            </div>
+
+            <!-- こと (新規追加) -->
+            <div class="char-card" onclick="openModal('koto')">
+                <div class="char-img-area">
+                    <!-- 画像ファイル名: koto_stand.png を用意してください -->
+                    <img src="koto_stand.png" alt="こと" class="char-img" style="object-fit: cover; object-position: top center;">
+                </div>
+                <div class="char-info">
+                    <div class="char-role">The Future Hope</div>
+                    <h3 class="char-name">忍犬こと</h3>
+                    <p class="char-catch">未来の希望：無垢な魂</p>
                     <span class="btn-more">詳しく見る</span>
                 </div>
             </div>
@@ -868,7 +886,7 @@
             </a>
 
             <!-- 6. REDBUBBLE -->
-            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card" style="border-color: #e32636;">
+            <a href="https://www.redbubble.com/people/ZUKINDOGS-JP/shop" target="_blank" class="shop-card">
                 <img src="redbubble_icon.png" alt="REDBUBBLE" class="shop-icon">
                 <div class="shop-info">
                     <h4>REDBUBBLE / Global Shop</h4>
@@ -976,6 +994,20 @@
                 <div class="modal-text-en">Heat (gets tired easily), Being praised (shy)</div>`,
                 img: "fuga_stand.png",
                 link: "https://www.ttrinity.jp/shop/zukindogs/design?from_shop_page=1&latest_date_approval=2025-05-07&p=1&shop_id=48257"
+            },
+            koto: {
+                name: "忍犬こと (KOTO)",
+                role: "The Future Hope",
+                desc: `2025年に新たな家族として迎えられた白柴の女の子。\n好奇心旺盛でやんちゃ盛り。まだ忍術は修行中ですが、偉大な先輩たちの背中を追いかけて、一生懸命に（たまに空回りしながら）成長中です。
+                <div class="modal-text-en">A White Shiba girl welcomed as a new family member in 2025. Full of curiosity and mischievous energy. She is still training in ninja arts, chasing after her great seniors and growing up earnestly (sometimes clumsily).</div>`,
+                story: `チロさんが旅立った後、不思議な縁で巡り会いました。まだ小さくて頼りないけれど、その瞳にはチロさんから受け継がれた「健気な光」が宿っています。\n次世代のZUKINDOGSを担う、希望の星です。
+                <div class="modal-text-en">Met through a mysterious connection after Chiro-san passed away. She is still small, but her eyes harbor the "devoted light" inherited from Chiro-san. She is the star of hope for the next generation of ZUKINDOGS.</div>`,
+                likes: `遊ぶこと、先輩たちの真似っこ、おやつ
+                <div class="modal-text-en">Playing, Imitating seniors, Snacks</div>`,
+                dislikes: `じっとしていること、「待て」
+                <div class="modal-text-en">Staying still, "Wait" command</div>`,
+                img: "koto_stand.png",
+                link: "https://www.youtube.com/channel/UCmj58VeAZHYzR8xB1AbSCVg?sub_confirmation=1" // YouTubeへのリンクに設定（グッズがまだ不明なため）
             }
         };
 
