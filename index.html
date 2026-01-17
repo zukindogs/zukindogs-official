@@ -72,8 +72,8 @@
         .hero {
             position: relative;
             width: 100%;
-            height: 70vh;
-            min-height: 500px;
+            height: 80vh; /* 画像を見せるため少し高さを戻す */
+            min-height: 550px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,20 +82,24 @@
             text-align: center;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15); 
             margin-bottom: 60px;
-            /* 背景画像の下地を黒にしてコントラストを高める */
-            background-color: #000; 
+            background-color: #000; /* 画像読み込み前や隙間対策 */
         }
 
-        .hero-bg-image {
+        .hero-bg-picture {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            /* 透明度を下げて背景を暗くし、文字を目立たせる */
-            opacity: 0.5; 
             z-index: 0;
+        }
+
+        .hero-bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 透明度を少し戻す（新しい画像が暗めなら数値を上げる） */
+            opacity: 0.6; 
         }
 
         .hero-content {
@@ -124,7 +128,6 @@
             letter-spacing: 0.1em;
             display: inline-flex;
             align-items: flex-start;
-            /* 文字色を真っ白に指定（念のため） */
             color: #ffffff;
         }
         
@@ -140,7 +143,7 @@
             font-family: var(--font-maru);
             font-size: 1.1rem;
             margin-top: 15px;
-            font-weight: 700; /* 太く変更 */
+            font-weight: 700;
             letter-spacing: 0.05em;
             color: #ffffff;
         }
@@ -149,9 +152,9 @@
             font-family: var(--font-en);
             font-size: 0.9rem;
             margin-top: 5px;
-            font-weight: 600; /* 太く変更 */
+            font-weight: 600;
             letter-spacing: 0.05em;
-            opacity: 1; /* 透過なしに変更 */
+            opacity: 1;
             color: #ffffff;
         }
 
@@ -658,8 +661,10 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <picture>
+        <picture class="hero-bg-picture">
+            <!-- 画面幅が768px以下（スマホ）の時は hero_bg_sp.png を表示 -->
             <source media="(max-width: 768px)" srcset="hero_bg_sp.png">
+            <!-- それ以外（PC・タブレット）は hero_bg.png を表示 -->
             <img src="hero_bg.png" class="hero-bg-image" alt="ZUKINDOGS Main Visual">
         </picture>
 
