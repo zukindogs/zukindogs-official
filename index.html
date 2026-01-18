@@ -345,10 +345,10 @@
             margin-top: 5px;
         }
 
-        /* --- Relax/Cheers Section (New) --- */
+        /* --- Relax/Cheers Section --- */
         .relax-section {
             text-align: center;
-            margin-bottom: 120px;
+            margin-bottom: 100px;
             padding: 0 20px;
         }
 
@@ -381,6 +381,74 @@
             color: var(--text-light);
             margin-top: 20px;
             letter-spacing: 0.05em;
+        }
+
+        /* --- Instagram Special Section (Updated) --- */
+        .instagram-section {
+            /* 背景や影をなくしてシンプルに */
+            background: transparent;
+            border-radius: 0;
+            padding: 40px 20px;
+            margin-bottom: 80px;
+            text-align: center;
+            box-shadow: none;
+            position: relative;
+            border: none;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 上部の派手なラインを削除 */
+        .instagram-section::before {
+            display: none;
+        }
+
+        .insta-icon-large {
+            margin: 0 auto 15px;
+            color: var(--text-light); /* 色を落ち着かせる */
+            opacity: 0.6;
+        }
+
+        .insta-title {
+            font-family: var(--font-en);
+            font-size: 1.2rem; /* サイズダウン */
+            margin-bottom: 10px;
+            color: var(--text-color);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .insta-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-family: var(--font-maru);
+        }
+
+        .insta-follow-btn {
+            display: inline-block;
+            /* グラデーションを廃止し、線画スタイルへ */
+            background: transparent;
+            color: var(--text-color);
+            padding: 10px 30px;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+            box-shadow: none;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: var(--font-en);
+        }
+
+        .insta-follow-btn:hover {
+            transform: translateY(-2px);
+            background-color: #fff;
+            border-color: var(--text-color);
+            opacity: 1;
         }
 
         /* --- Character Grid --- */
@@ -833,7 +901,7 @@
             <h2 class="story-heading">📖 Our Story</h2>
             
             <p>ZUKINDOGSのリーダー「やまと」は、最愛の柴犬・チロさんがシニア期に入った頃に誕生しました。老いていく愛犬の姿と、忍者の力強さを掛け合わせ、「完璧ではないけれど、一生懸命で愛おしい」唯一無二のキャラクターを目指しました。</p>
-            <p class="text-en">The leader of ZUKINDOGS, "YAMATO," was born when my beloved Shiba Inu, Chiro-san, entered her senior years. Inspired by her grace and the strength of a Ninja, I created these characters to celebrate the "earnest and adorable" spirit of doing one's best.</p>
+            <p class="text-en">The leader of ZUKINDOGS, "YAMATO," was born when my beloved Shiba Inu, Chiro-san, entered her senior years. Inspired by her grace and the strength of a Ninja, I created these characters to celebrate the "earnest and adorable" spirit of doing ones best.</p>
             
             <p>2024年にチロさんは旅立ちましたが、彼女から教わった「健気な美しさ」は、この忍犬たちの中に永遠に息づいています。</p>
             <p class="text-en">Although Chiro-san passed away in 2024, her legacy of "devoted beauty" lives on in these Ninja Dogs.</p>
@@ -851,19 +919,34 @@
             </div>
             <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light); line-height: 1.8;">
                 やまとの鼻の中には、チロさんのふかふかの毛が入っています。<br>
-                <span class="text-en" style="margin:0;">Yamato's nose is stuffed with Chiro-san's fluffy fur.</span>
+                <span class="text-en" style="margin:0;">Yamatos nose is stuffed with Chiro-sans fluffy fur.</span>
             </p>
         </section>
 
-        <!-- Relax/Cheers Section (New) -->
+        <!-- Relax/Cheers Section -->
         <section class="relax-section scroll-reveal">
             <div class="relax-img-container">
-                <!-- ここに乾杯画像を表示 (cheers.png または cheers.gif) -->
                 <img src="cheers.png" alt="Cheers!" class="relax-img">
             </div>
             <div class="relax-message">
                 任務完了！ちょっと一息。<br>
                 <span class="text-en" style="font-size: 0.9em; opacity: 0.8;">Mission Complete. Cheers!</span>
+            </div>
+        </section>
+
+        <!-- Instagram Special Section (Updated) -->
+        <section class="instagram-section scroll-reveal">
+            <div class="insta-icon-large">
+                <!-- サイズを少し小さく、色をCSSで制御 -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </div>
+            <div class="insta-text">
+                <h3 class="insta-title">Instagram</h3>
+                <p class="insta-desc">3忍のリールや4コマ漫画、画像をアップしています。<br>
+                <span class="text-en" style="font-size: 0.9em; opacity: 0.7;">Reels, 4-Panel Comics & Images of the ninja trio.</span></p>
+                <a href="https://www.instagram.com/shinobi_dog/" target="_blank" class="insta-follow-btn">
+                    View Instagram
+                </a>
             </div>
         </section>
 
@@ -1073,7 +1156,7 @@
                 dislikes: `暑さ（すぐバテる）、自分を褒められること（照れて逃げる）
                 <div class="modal-text-en">Heat (gets tired easily), Being praised (shy)</div>`,
                 img: "fuga_stand.png",
-                link: "https://www.ttrinity.jp/shop/zukindogs/design?from_shop_page=1&latest_date_approval=2025-05-07&p=1&shop_id=48257"
+                link: "https://suzuri.jp/ZUKINDOGS/12764369/acrylic-block/m/clear"
             }
         };
 
