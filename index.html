@@ -302,7 +302,7 @@
         /* --- Memory Photo --- */
         .memory-section {
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 80px;
         }
         
         .memory-photo-frame {
@@ -345,10 +345,41 @@
             margin-top: 5px;
         }
 
+        /* --- Movie Section (NEW) --- */
+        .movie-section {
+            text-align: center;
+            margin-bottom: 80px;
+            padding: 0 20px;
+        }
+
+        .movie-container {
+            max-width: 640px;
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            position: relative;
+            background: #000;
+        }
+
+        .movie-video {
+            width: 100%;
+            display: block;
+        }
+
+        .movie-title {
+            font-family: var(--font-maru);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
         /* --- Relax/Cheers Section --- */
         .relax-section {
             text-align: center;
-            margin-bottom: 100px;
+            margin-bottom: 120px;
             padding: 0 20px;
         }
 
@@ -383,9 +414,8 @@
             letter-spacing: 0.05em;
         }
 
-        /* --- Instagram Special Section (Updated) --- */
+        /* --- Instagram Special Section --- */
         .instagram-section {
-            /* 背景や影をなくしてシンプルに */
             background: transparent;
             border-radius: 0;
             padding: 40px 20px;
@@ -399,20 +429,19 @@
             margin-right: auto;
         }
 
-        /* 上部の派手なラインを削除 */
         .instagram-section::before {
             display: none;
         }
 
         .insta-icon-large {
             margin: 0 auto 15px;
-            color: var(--text-light); /* 色を落ち着かせる */
+            color: var(--text-light);
             opacity: 0.6;
         }
 
         .insta-title {
             font-family: var(--font-en);
-            font-size: 1.2rem; /* サイズダウン */
+            font-size: 1.2rem;
             margin-bottom: 10px;
             color: var(--text-color);
             font-weight: 600;
@@ -429,7 +458,6 @@
 
         .insta-follow-btn {
             display: inline-block;
-            /* グラデーションを廃止し、線画スタイルへ */
             background: transparent;
             color: var(--text-color);
             padding: 10px 30px;
@@ -901,7 +929,7 @@
             <h2 class="story-heading">📖 Our Story</h2>
             
             <p>ZUKINDOGSのリーダー「やまと」は、最愛の柴犬・チロさんがシニア期に入った頃に誕生しました。老いていく愛犬の姿と、忍者の力強さを掛け合わせ、「完璧ではないけれど、一生懸命で愛おしい」唯一無二のキャラクターを目指しました。</p>
-            <p class="text-en">The leader of ZUKINDOGS, "YAMATO," was born when my beloved Shiba Inu, Chiro-san, entered her senior years. Inspired by her grace and the strength of a Ninja, I created these characters to celebrate the "earnest and adorable" spirit of doing ones best.</p>
+            <p class="text-en">The leader of ZUKINDOGS, "YAMATO," was born when my beloved Shiba Inu, Chiro-san, entered her senior years. Inspired by her grace and the strength of a Ninja, I created these characters to celebrate the "earnest and adorable" spirit of doing one's best.</p>
             
             <p>2024年にチロさんは旅立ちましたが、彼女から教わった「健気な美しさ」は、この忍犬たちの中に永遠に息づいています。</p>
             <p class="text-en">Although Chiro-san passed away in 2024, her legacy of "devoted beauty" lives on in these Ninja Dogs.</p>
@@ -910,7 +938,7 @@
             <p class="text-en">In 2025, we welcomed a new family member, "KOTO" (White Shiba). Cherishing the bond Chiro-san left behind, we continue to share the tale of these "Gentle Ninjas" with the world.</p>
         </section>
 
-        <!-- Memory Section -->
+        <!-- Memory Section (Chiro & Yamato) -->
         <section class="memory-section scroll-reveal delay-200">
             <div class="memory-photo-frame">
                 <img src="chiro_yamato_v2.jpg" alt="チロさんとやまと" class="memory-img">
@@ -919,13 +947,25 @@
             </div>
             <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light); line-height: 1.8;">
                 やまとの鼻の中には、チロさんのふかふかの毛が入っています。<br>
-                <span class="text-en" style="margin:0;">Yamatos nose is stuffed with Chiro-sans fluffy fur.</span>
+                <span class="text-en" style="margin:0;">Yamato's nose is stuffed with Chiro-san's fluffy fur.</span>
             </p>
         </section>
 
-        <!-- Relax/Cheers Section -->
-        <section class="relax-section scroll-reveal">
+        <!-- Movie Section (New Added) -->
+        <section class="movie-section scroll-reveal">
+            <div class="movie-container">
+                <video src="brand_movie.mp4" class="movie-video" autoplay loop muted playsinline></video>
+            </div>
+            <div class="movie-title">
+                忍音組デビュー！<br>
+                <span class="text-en" style="font-size: 0.8em; font-weight:400; opacity:0.8;">Shinobi－sound-Gumi Band Debut!</span>
+            </div>
+        </section>
+
+        <!-- Relax/Cheers Section (Restored & Moved) -->
+        <section class="relax-section scroll-reveal delay-100">
             <div class="relax-img-container">
+                <!-- ここに乾杯画像 (cheers.png) を表示 -->
                 <img src="cheers.png" alt="Cheers!" class="relax-img">
             </div>
             <div class="relax-message">
@@ -934,10 +974,9 @@
             </div>
         </section>
 
-        <!-- Instagram Special Section (Updated) -->
+        <!-- Instagram Special Section -->
         <section class="instagram-section scroll-reveal">
             <div class="insta-icon-large">
-                <!-- サイズを少し小さく、色をCSSで制御 -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </div>
             <div class="insta-text">
