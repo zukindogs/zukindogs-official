@@ -185,7 +185,7 @@
         .story-section p { max-width: 800px; margin: 0 auto 1.5em; text-align: justify; text-align-last: center; }
         .text-en { font-family: var(--font-en); font-size: 0.9em; color: var(--text-light); margin-top: -0.5em; margin-bottom: 2em !important; line-height: 1.6; }
 
-        /* --- Memory & Scroll Art --- */
+        /* --- Memory Section --- */
         .memory-section { text-align: center; margin: 80px 0; }
         .memory-photo-frame {
             background: #fff; padding: 15px 15px 60px 15px; display: inline-block;
@@ -196,16 +196,23 @@
         .memory-img { max-width: 500px; width: 100%; height: auto; display: block; }
         .memory-caption { font-family: var(--font-maru); margin-top: 15px; color: var(--text-color); font-weight: 700; }
         
-        .scroll-art-section { text-align: center; margin-top: 120px; }
-        .scroll-art-img {
-            max-width: 800px; width: 100%; height: auto;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
-            animation: gentleFloat 5s ease-in-out infinite;
+        /* --- Relax Section --- */
+        .relax-section { text-align: center; margin-top: 120px; }
+        .relax-img { 
+            max-width: 300px; width: 100%; 
+            animation: gentleBreath 4s ease-in-out infinite; 
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); 
         }
-        @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .relax-message { font-family: var(--font-maru); font-size: 1rem; color: var(--text-light); margin-top: 20px; letter-spacing: 0.05em; }
+
+        @keyframes gentleBreath { 
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.04) translateY(-5px) rotate(2deg); } 
+            100% { transform: scale(1) rotate(0deg); }
+        }
 
         /* --- Characters --- */
-        .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .char-card {
             background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
             box-shadow: var(--shadow-soft); cursor: pointer; transition: all 0.4s;
@@ -259,11 +266,6 @@
         .movie-container { max-width: 700px; width: 100%; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft); background: #000; }
         .movie-video { width: 100%; display: block; }
         .movie-title { font-family: var(--font-maru); font-size: 1.2rem; margin-top: 25px; font-weight: 700; }
-
-        /* --- Relax Section --- */
-        .relax-section { text-align: center; margin-top: 120px; }
-        .relax-img { max-width: 300px; width: 100%; animation: gentleBreath 4s ease-in-out infinite; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
-        .relax-message { font-family: var(--font-maru); font-size: 1rem; color: var(--text-light); margin-top: 20px; letter-spacing: 0.05em; }
 
         /* --- Modal --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-overlay); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.4s; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
@@ -361,7 +363,10 @@
             <div class="movie-container">
                 <video src="brand_movie.mp4" class="movie-video" autoplay loop muted playsinline></video>
             </div>
-            <div class="movie-title">忍音組デビュー！<br><span class="text-en" style="font-size:0.8em;opacity:0.8;">Shinobi-On-Gumi Band Debut!</span></div>
+            <div class="movie-title">
+                忍音組デビュー！<br>
+                <span class="text-en" style="font-size:0.8em;opacity:0.8;">Shinobi-Sound-Group Band Debut!</span>
+            </div>
         </section>
 
         <!-- Characters -->
