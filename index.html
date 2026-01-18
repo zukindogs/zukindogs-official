@@ -63,26 +63,20 @@
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
         /* --- Scroll Reveal Animations --- */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+        .scroll-reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .scroll-reveal.active { opacity: 1; transform: translateY(0); }
         .delay-100 { transition-delay: 0.1s; }
         .delay-200 { transition-delay: 0.2s; }
 
         /* --- Floating Ninja Elements (Parallax) --- */
-        .ninja-deco {
-            position: fixed; z-index: 0; pointer-events: none; opacity: 0.15;
-        }
+        .ninja-deco { position: fixed; z-index: 0; pointer-events: none; opacity: 0.15; }
         .shuriken {
             width: 60px; height: 60px;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23333'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E");
             background-size: contain; background-repeat: no-repeat;
         }
 
-        /* --- Hero Section (Video) --- */
+        /* --- Hero Section --- */
         .hero {
             position: relative;
             width: 100%; height: 90vh; min-height: 600px;
@@ -91,10 +85,50 @@
             background-color: #000;
         }
 
-        .hero-video {
-            position: absolute; top: 50%; left: 50%;
-            width: 100%; height: 100%; object-fit: cover;
-            transform: translate(-50%, -50%); opacity: 0.7;
+        /* 背景要素の共通スタイル */
+        .hero-bg-media {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* PC用静止画 */
+        .hero-img-pc {
+            display: block;
+            opacity: 0.6;
+            animation: bgZoom 25s infinite alternate ease-in-out;
+        }
+
+        /* スマホ用動画 */
+        .hero-video-sp {
+            display: none; /* デフォルトは非表示 */
+            opacity: 0.8;
+        }
+
+        @keyframes bgZoom { from { transform: scale(1); } to { transform: scale(1.15); } }
+
+        /* 和柄パターンオーバーレイ */
+        .hero::after {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 50% 100%, transparent 10px, rgba(255,255,255,0.1) 11px, rgba(255,255,255,0.1) 12px, transparent 13px);
+            background-size: 40px 20px;
+            opacity: 0.3;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* 桜のアニメーション */
+        .sakura-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; z-index: 2; pointer-events: none;
+        }
+        .sakura {
+            position: absolute; background-color: #ffc0cb; border-radius: 100% 0 100% 0; opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
         }
 
         .hero-content {
@@ -162,9 +196,7 @@
         .memory-img { max-width: 500px; width: 100%; height: auto; display: block; }
         .memory-caption { font-family: var(--font-maru); margin-top: 15px; color: var(--text-color); font-weight: 700; }
         
-        .scroll-art-section {
-            text-align: center; margin-top: 120px;
-        }
+        .scroll-art-section { text-align: center; margin-top: 120px; }
         .scroll-art-img {
             max-width: 800px; width: 100%; height: auto;
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.1));
@@ -173,7 +205,7 @@
         @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         /* --- Characters --- */
-        .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
         .char-card {
             background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
             box-shadow: var(--shadow-soft); cursor: pointer; transition: all 0.4s;
@@ -195,54 +227,28 @@
         .char-card:hover .btn-more { background: var(--accent-blue); color: #fff; }
 
         /* --- GOODS & SHOPS --- */
-        .goods-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; margin-bottom: 60px;
-        }
+        .goods-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
         .goods-card {
             background: #fff; border-radius: var(--radius); overflow: hidden;
             box-shadow: var(--shadow-soft); text-align: center; border: 1px solid rgba(0,0,0,0.02);
             transition: 0.4s; position: relative;
         }
         .goods-card:hover { transform: translateY(-10px); border-color: var(--point-color); }
-        .goods-img-area {
-            height: 250px; background: #f8f8f8; display: flex; align-items: center; justify-content: center;
-            position: relative; overflow: hidden;
-        }
+        .goods-img-area { height: 250px; background: #f8f8f8; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
         .goods-img { height: 80%; width: auto; object-fit: contain; transition: 0.4s; }
         .goods-card:hover .goods-img { transform: scale(1.1); }
-        .goods-badge {
-            position: absolute; top: 15px; left: 15px;
-            background: var(--point-color); color: #fff; padding: 5px 12px;
-            border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
-        }
+        .goods-badge { position: absolute; top: 15px; left: 15px; background: var(--point-color); color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; }
         .goods-info { padding: 25px; }
         .goods-title { font-family: var(--font-maru); font-size: 1.2rem; margin-bottom: 10px; }
         .goods-desc { font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; }
-        .goods-btn {
-            display: inline-block; width: 100%; padding: 12px;
-            border: 1px solid var(--accent-blue); color: var(--accent-blue);
-            border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: 0.3s;
-        }
+        .goods-btn { display: inline-block; width: 100%; padding: 12px; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
         .goods-card:hover .goods-btn { background: var(--accent-blue); color: #fff; }
 
         /* --- Shop List --- */
-        .shop-list-container {
-            display: grid; grid-template-columns: 1fr; gap: 40px;
-        }
+        .shop-list-container { display: grid; grid-template-columns: 1fr; gap: 40px; }
         @media (min-width: 768px) { .shop-list-container { grid-template-columns: 1fr 1fr; } }
-
-        .shop-group-title {
-            font-family: var(--font-en); font-size: 1.1rem; color: var(--text-light);
-            margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;
-            display: flex; align-items: center; gap: 10px;
-        }
-        
-        .shop-link {
-            display: flex; align-items: center; gap: 15px;
-            background: #fff; padding: 20px; border-radius: 16px; margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s;
-        }
+        .shop-group-title { font-family: var(--font-en); font-size: 1.1rem; color: var(--text-light); margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .shop-link { display: flex; align-items: center; gap: 15px; background: #fff; padding: 20px; border-radius: 16px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: 0.3s; }
         .shop-link:hover { transform: translateX(5px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .shop-icon-mini { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; border: 1px solid #eee; }
         .shop-name { font-weight: 700; font-size: 1rem; }
@@ -250,13 +256,14 @@
 
         /* --- Movie Section --- */
         .movie-section { text-align: center; margin-top: 120px; }
-        .movie-container {
-            max-width: 700px; width: 100%; margin: 0 auto;
-            border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft);
-            background: #000;
-        }
+        .movie-container { max-width: 700px; width: 100%; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-soft); background: #000; }
         .movie-video { width: 100%; display: block; }
         .movie-title { font-family: var(--font-maru); font-size: 1.2rem; margin-top: 25px; font-weight: 700; }
+
+        /* --- Relax Section --- */
+        .relax-section { text-align: center; margin-top: 120px; }
+        .relax-img { max-width: 300px; width: 100%; animation: gentleBreath 4s ease-in-out infinite; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1)); }
+        .relax-message { font-family: var(--font-maru); font-size: 1rem; color: var(--text-light); margin-top: 20px; letter-spacing: 0.05em; }
 
         /* --- Modal --- */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-overlay); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.4s; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
@@ -273,8 +280,28 @@
         .modal-text { font-size: 1rem; line-height: 1.9; color: var(--text-light); white-space: pre-wrap; background: #fff; padding: 20px; border-radius: 15px; }
         .modal-text-en { font-size: 0.9rem; line-height: 1.6; color: #777; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; font-family: var(--font-en); }
 
+        /* Share Button */
+        .share-btn-container { margin-top: 20px; text-align: center; }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: #000; color: #fff; padding: 10px 25px; border-radius: 30px;
+            font-size: 0.85rem; font-weight: 600; text-decoration: none;
+            transition: 0.3s;
+        }
+        .share-btn:hover { background: #333; transform: scale(1.05); }
+
         /* Footer */
         .site-footer { text-align: center; padding: 80px 20px; background: #fff; border-top: 1px solid #eee; margin-top: 100px; }
+        
+        /* --- Mobile / PC Switching --- */
+        @media (max-width: 768px) {
+            .hero-img-pc { display: none; }
+            .hero-video-sp { display: block; }
+            .story-section { padding: 45px 30px; }
+            .hero { height: 75vh; }
+            .modal-details { padding: 40px 30px; }
+            .ninja-nav { bottom: 20px; right: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -290,7 +317,14 @@
 
     <!-- Hero Section -->
     <header class="hero">
-        <video src="brand_movie.mp4" class="hero-video" autoplay loop muted playsinline></video>
+        <div class="sakura-container" id="sakura-container"></div>
+        
+        <!-- PC: Image -->
+        <img src="hero_bg.png" class="hero-bg-media hero-img-pc" alt="ZUKINDOGS Main Visual">
+        
+        <!-- SP: Video (New) -->
+        <video src="hero_movie_sp.mp4" class="hero-bg-media hero-video-sp" autoplay loop muted playsinline></video>
+        
         <div class="hero-content">
             <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/ed295819-fdbb-4f98-9663-d46514f6842b.png" alt="ZUKINDOGS Logo" class="hero-logo">
             <h1 class="hero-title">ZUKINDOGS<span class="tm-mark-hero">®</span></h1>
@@ -351,7 +385,6 @@
         <div id="goods-section">
             <h2 class="section-title scroll-reveal">GOODS & SHOPS</h2>
             
-            <!-- Recommended Goods -->
             <div class="goods-grid">
                 <a href="https://www.ttrinity.jp/shop/zukindogs/design" target="_blank" class="goods-card scroll-reveal">
                     <span class="goods-badge">APPAREL</span>
@@ -385,26 +418,18 @@
             <!-- Shop List (Grouped) -->
             <div class="shop-list-container scroll-reveal">
                 
-                <!-- Japan Group -->
                 <div class="shop-group">
                     <div class="shop-group-title">🇯🇵 日本国内向け (For Japan)</div>
                     <a href="https://www.ttrinity.jp/shop/zukindogs/design" target="_blank" class="shop-link">
                         <img src="https://prd.resource-api.lit.link/images/creator/oWZ0pQ5NArbB79r8W7QicEzMdqB2/d662f486-1cdc-4a96-a029-22c054a1ae16.png" class="shop-icon-mini">
-                        <div>
-                            <div class="shop-name">Tシャツトリニティ</div>
-                            <div class="shop-sub">アパレル・トートバッグ</div>
-                        </div>
+                        <div><div class="shop-name">Tシャツトリニティ</div><div class="shop-sub">アパレル・トートバッグ</div></div>
                     </a>
                     <a href="https://suzuri.jp/ZUKINDOGS" target="_blank" class="shop-link">
                         <img src="https://prd.resource-api.lit.link/images/creators/ddf5ea99-c208-4d8f-b302-4b69c226302d/profile_links/buttons/6db393f1-7be6-490f-b146-0e10e5b9a533.png" class="shop-icon-mini">
-                        <div>
-                            <div class="shop-name">SUZURI</div>
-                            <div class="shop-sub">雑貨・ステッカー</div>
-                        </div>
+                        <div><div class="shop-name">SUZURI</div><div class="shop-sub">雑貨・ステッカー</div></div>
                     </a>
                 </div>
 
-                <!-- Media Group -->
                 <div class="shop-group">
                     <div class="shop-group-title">📱 Media & Contact</div>
                     <a href="https://www.youtube.com/channel/UCmj58VeAZHYzR8xB1AbSCVg?sub_confirmation=1" target="_blank" class="shop-link">
@@ -420,9 +445,10 @@
             </div>
         </div>
 
-        <!-- Scroll Trio Art (New) -->
-        <section class="scroll-art-section scroll-reveal" style="margin-top:100px;">
-            <img src="scroll_trio.png" alt="Ninja Trio on Scroll" class="scroll-art-img">
+        <!-- Relax -->
+        <section class="relax-section scroll-reveal" style="margin-top:100px;">
+            <img src="clink.png" alt="Cheers" class="relax-img">
+            <div class="relax-message">任務完了！ちょっと一息。</div>
         </section>
 
     </div>
@@ -431,7 +457,7 @@
         <p>©︎ ZUKINDOGS All Rights Reserved.<br>ZUKINDOGS® は日本国における登録商標です。</p>
     </footer>
 
-    <!-- Modal (Code kept same, abbreviated for brevity but functional) -->
+    <!-- Modal -->
     <div id="charModal" class="modal-overlay">
         <div class="modal-close" onclick="closeModal()">×</div>
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -445,6 +471,17 @@
                     <div><span class="modal-label">苦手</span><div id="m_dislikes" class="modal-text" style="padding:10px;"></div></div>
                 </div>
                 <a id="m_link" href="#" target="_blank" class="modal-btn">このキャラクターのグッズを見る</a>
+                
+                <!-- Share Button -->
+                <div class="share-btn-container">
+                    <a href="#" id="share-btn" target="_blank" class="share-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+                        </svg>
+                        この忍犬を応援する
+                    </a>
+                </div>
+
                 <button onclick="closeModal()" class="modal-back-btn" style="margin-top:15px; background:transparent; border:1px solid #ccc; width:100%; padding:10px; border-radius:10px; cursor:pointer;">閉じる</button>
             </div>
         </div>
@@ -454,46 +491,31 @@
         // Character Data
         const charData = {
             yamato: {
-                name: "忍犬やまと (YAMATO)",
-                role: "Leader",
+                name: "忍犬やまと", role: "Leader",
                 desc: `非常に責任感が強く、常に仲間の先頭に立つ頼れるリーダー。\nしかし、大好物のお団子を目の前にすると、それまでの威厳が嘘のように消え、目がキラキラになってしまう愛嬌のある一面も。
                 <div class="modal-text-en">A reliable leader with a strong sense of responsibility, always standing at the forefront. However, his dignity vanishes instantly when he sees his favorite "Dango" dumplings, revealing a charming, playful side.</div>`,
                 story: `チロさんが最初に保護し、深い愛情を注いだのがやまとでした。チロさんが旅立つ時、彼は「みんなを頼むよ」と託された気がしています。\n今でも、チロさんが愛用していたハンカチーフを見つけると、こっそりその横で眠り、リーダーとしての勇気をチャージしています。
                 <div class="modal-text-en">Chiro-san rescued him first and poured her deep love into him. When she passed away, he felt entrusted with the mission to "take care of everyone." Even now, when he finds Chiro-san's handkerchief, he secretly sleeps next to it to recharge his courage as a leader.</div>`,
-                likes: `みたらし団子、朝日、チロさんと歩いた散歩道
-                <div class="modal-text-en">Mitarashi Dango, Morning Sun, Walking paths with Chiro-san</div>`,
-                dislikes: `雷（実はかなりビビリ）、仲間の涙
-                <div class="modal-text-en">Thunder (actually quite scared), Tears of friends</div>`,
-                img: "yamato_stand_2.png",
-                link: "https://www.ttrinity.jp/product/11819827#888"
+                likes: "みたらし団子、朝日", dislikes: "雷、仲間の涙",
+                img: "yamato_stand_2.png", link: "https://www.ttrinity.jp/product/11819827#888"
             },
             sakura: {
-                name: "忍犬さくら (SAKURA)",
-                role: "The Bright Soul",
+                name: "忍犬さくら", role: "Bright Soul",
                 desc: `静かにそこにいるだけで、場の空気をやわらかく整えてくれる存在。\n目立つことはしませんが、人の心の揺らぎに敏感で、疲れた仲間をそっと包み込むような、やさしい癒しを届けてくれます。
                 <div class="modal-text-en">A presence that softens the atmosphere just by quietly being there. She doesn't seek attention, but she is sensitive to the fluctuations of others' hearts, delivering a gentle healing that softly wraps around tired friends.</div>`,
                 story: `春の嵐の翌日、満開の桜の木の下で震えていたところを、やまととチロさんに見つけられました。最初は怯えていましたが、チロさんがくれた温かいミルクとやまとの励ましで心を開きました。\n「みんなを笑顔にする」ことが、自分を救ってくれた二人への恩返しだと思っています。
                 <div class="modal-text-en">Found shivering under a cherry blossom tree after a spring storm. Initially scared, she opened her heart thanks to warm milk from Chiro-san and encouragement from Yamato. She wants to make everyone smile to repay their kindness.</div>`,
-                likes: `団扇、歌を歌うこと、日向ぼっこ
-                <div class="modal-text-en">Uchiwa (Fan), Singing, Sunbathing</div>`,
-                dislikes: `雨の日（外で遊べないから）、喧嘩
-                <div class="modal-text-en">Rainy days (can't play outside), Fighting</div>`,
-                img: "sakura_stand.png", 
-                link: "https://www.ttrinity.jp/product/11820333#699"
+                likes: "団扇、歌を歌うこと", dislikes: "雨の日、喧嘩",
+                img: "sakura_stand.png", link: "https://www.ttrinity.jp/product/11820333#699"
             },
             fuga: {
-                name: "忍犬フウガ (FUGA)",
-                role: "The Guardian",
+                name: "忍犬フウガ", role: "Guardian",
                 desc: `無口でぶっきらぼうに見えますが、実は誰よりも繊細で優しい心の持ち主。\n言葉よりも行動で示すタイプで、力仕事や夜回りは進んで引き受けます。
                 <div class="modal-text-en">Looks quiet and blunt, but has a delicate and kind heart. He shows his feelings through actions rather than words, and willingly takes on physical work and night patrols.</div>`,
                 story: `かつては山奥の神社を守る「野良の番犬」として孤独に生きていました。ある冬の日、凍えていた彼にチロさんが自分のマフラーを巻いてくれたことがきっかけで、影から一行を見守るようになりました。\nやまとに熱烈にスカウトされ、今ではZUKINDOGSの「盾」として仲間を命がけで守っています。
                 <div class="modal-text-en">He used to live alone guarding a shrine deep in the mountains. One winter day, Chiro-san wrapped her scarf around him when he was freezing. Since then, he watched over them from the shadows until Yamato recruited him. Now he protects his friends as their "Shield."</div>`,
-                likes: `お料理（実は隠れた名シェフ）、静かな森、小さい生き物
-                <div class="modal-text-en">Cooking (Hidden Chef), Quiet Forest, Small Animals</div>`,
-                dislikes: `暑さ（すぐバテる）、自分を褒められること（照れて逃げる）
-                <div class="modal-text-en">Heat (gets tired easily), Being praised (shy)</div>`,
-                img: "fuga_stand.png",
-                link: "https://suzuri.jp/ZUKINDOGS/12764369/acrylic-block/m/clear"
+                likes: "お料理、静かな森", dislikes: "暑さ、褒められること",
+                img: "fuga_stand.png", link: "https://suzuri.jp/ZUKINDOGS/12764369/acrylic-block/m/clear"
             }
         };
 
@@ -507,6 +529,7 @@
         const m_likes = document.getElementById('m_likes');
         const m_dislikes = document.getElementById('m_dislikes');
         const m_link = document.getElementById('m_link');
+        const shareBtn = document.getElementById('share-btn');
 
         function openModal(charId) {
             const data = charData[charId];
@@ -514,6 +537,12 @@
             m_desc.innerHTML = data.desc; m_story.innerHTML = data.story;
             m_likes.innerHTML = data.likes; m_dislikes.innerHTML = data.dislikes;
             m_link.href = data.link;
+            
+            // Share Text Generation
+            const shareText = encodeURIComponent(`${data.name}を応援中！\n推し忍犬です🥷🐕\n`);
+            const shareUrl = encodeURIComponent(window.location.href);
+            shareBtn.href = `https://twitter.com/intent/tweet?text=${shareText}&hashtags=ZUKINDOGS&url=${shareUrl}`;
+
             modal.classList.add('active'); document.body.style.overflow = 'hidden';
         }
         function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
@@ -537,6 +566,20 @@
                 decoContainer.appendChild(s);
             }
             
+            // Sakura Animation
+            const sakuraContainer = document.getElementById('sakura-container');
+            const createSakura = () => {
+                const el = document.createElement('div');
+                el.classList.add('sakura');
+                el.style.left = Math.random() * 100 + '%';
+                el.style.animationDuration = Math.random() * 5 + 5 + 's';
+                el.style.width = Math.random() * 10 + 5 + 'px';
+                el.style.height = el.style.width;
+                sakuraContainer.appendChild(el);
+                setTimeout(() => el.remove(), 10000);
+            };
+            setInterval(createSakura, 300);
+
             window.addEventListener('scroll', () => {
                 const scrolled = window.scrollY;
                 document.querySelectorAll('.shuriken').forEach((el, index) => {
