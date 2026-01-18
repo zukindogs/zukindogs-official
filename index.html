@@ -219,7 +219,6 @@
         .trademark-info {
             text-align: center;
             margin-bottom: 40px;
-            /* アニメーションはJS制御に変更するためCSSアニメーションは削除 */
         }
         
         .tm-badge {
@@ -346,6 +345,44 @@
             margin-top: 5px;
         }
 
+        /* --- Relax/Cheers Section (New) --- */
+        .relax-section {
+            text-align: center;
+            margin-bottom: 120px;
+            padding: 0 20px;
+        }
+
+        .relax-img-container {
+            display: inline-block;
+            position: relative;
+            max-width: 300px; /* 画像サイズ調整 */
+            width: 100%;
+        }
+
+        .relax-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            /* 癒やし系ループアニメーション（CSS版） */
+            animation: gentleBreath 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+
+        /* ゆっくり呼吸するような動き */
+        @keyframes gentleBreath {
+            0% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1.03) translateY(-5px); } /* ほんの少し拡大して浮く */
+            100% { transform: scale(1) translateY(0); }
+        }
+
+        .relax-message {
+            font-family: var(--font-maru);
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-top: 20px;
+            letter-spacing: 0.05em;
+        }
+
         /* --- Character Grid --- */
         .character-grid {
             display: grid;
@@ -360,7 +397,7 @@
             overflow: hidden;
             box-shadow: 0 10px 25px rgba(0,0,0,0.06);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弾むような動きに変更 */
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* 弾むような動き */
             position: relative;
             border: 1px solid rgba(0,0,0,0.02);
         }
@@ -753,8 +790,8 @@
         /* スマホ向けの微調整 */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
-            .hero-main-copy { font-size: 1.4rem; margin-top: 15px; } /* スマホでのキャッチコピーサイズ */
-            .hero-sub-copy { font-size: 0.9rem; } /* スマホでのサブコピーサイズ */
+            .hero-main-copy { font-size: 1.4rem; margin-top: 15px; } 
+            .hero-sub-copy { font-size: 0.9rem; } 
             .section-title { font-size: 1.8rem; margin: 60px 0 40px; }
             .modal-name { font-size: 1.8rem; }
             .modal-details { padding: 30px 20px; }
@@ -795,21 +832,10 @@
         <section class="story-section scroll-reveal delay-100">
             <h2 class="story-heading">📖 Our Story</h2>
             
-            <p>ZUKINDOGSのリーダー「やまと」は、最愛の柴犬・チロさんがシニア期に入った頃に誕生しました。老いていく愛犬の姿と、忍者の力強さを掛け合わせ、「完璧ではないけれど、一生懸命で愛おしい」唯一無二のキャラクターを目指しました。</p>
-            <p class="text-en">The leader of ZUKINDOGS, "YAMATO," was born when my beloved Shiba Inu, Chiro-san, entered her senior years. Inspired by her grace and the strength of a Ninja, I created these characters to celebrate the "earnest and adorable" spirit of doing one's best.</p>
-            
-            <p>2024年にチロさんは旅立ちましたが、彼女から教わった「健気な美しさ」は、この忍犬たちの中に永遠に息づいています。</p>
-            <p class="text-en">Although Chiro-san passed away in 2024, her legacy of "devoted beauty" lives on in these Ninja Dogs.</p>
-
-            <!-- 追加テキスト -->
-            <p>2025年、新たな家族として白柴の「こと」を迎えました。チロさんが繋いでくれた縁を大切に、これからも「優しき忍び」たちの物語を世界へ届けていきます。</p>
-            <p class="text-en">In 2025, we welcomed a new family member, "KOTO" (White Shiba). Cherishing the bond Chiro-san left behind, we continue to share the tale of these "Gentle Ninjas" with the world.</p>
-        </section>
-
-        <!-- Memory Section (Added) -->
+        <!-- Memory Section -->
         <section class="memory-section scroll-reveal delay-200">
             <div class="memory-photo-frame">
-                <img src="chiro_yamato.jpg" alt="チロさんとやまと" class="memory-img">
+                <img src="chiro_yamato_v2.jpg" alt="チロさんとやまと" class="memory-img">
                 <div class="memory-caption">チロさんとやまと</div>
                 <div class="memory-sub">Chiro & Yamato - Precious Memory</div>
             </div>
@@ -817,6 +843,18 @@
                 やまとの鼻の中には、チロさんのふかふかの毛が入っています。<br>
                 <span class="text-en" style="margin:0;">Yamato's nose is stuffed with Chiro-san's fluffy fur.</span>
             </p>
+        </section>
+
+        <!-- Relax/Cheers Section (New) -->
+        <section class="relax-section scroll-reveal">
+            <div class="relax-img-container">
+                <!-- ここに乾杯画像を表示 (cheers.png または cheers.gif) -->
+                <img src="cheers.png" alt="Cheers!" class="relax-img">
+            </div>
+            <div class="relax-message">
+                任務完了！ちょっと一息。<br>
+                <span class="text-en" style="font-size: 0.9em; opacity: 0.8;">Mission Complete. Cheers!</span>
+            </div>
         </section>
 
         <!-- Characters Section -->
@@ -1002,8 +1040,8 @@
             sakura: {
                 name: "忍犬さくら (SAKURA)",
                 role: "The Bright Soul",
-                desc: `太陽のように明るく、その場にいるだけで空気がパッと華やぐチームのムードメーカー。\n天真爛漫で少しおっちょこちょいな一面もありますが、他人の心の痛みに敏感で、落ち込んでいる仲間にはそっと寄り添う優しさを持っています。
-                <div class="modal-text-en">A mood maker who brightens the air just by being there, like the sun. Innocent and a bit clumsy, but sensitive to others' pain, she has the kindness to gently snuggle up to depressed friends.</div>`,
+                desc: `静かにそこにいるだけで、場の空気をやわらかく整えてくれる存在。\n目立つことはしませんが、人の心の揺らぎに敏感で、疲れた仲間をそっと包み込むような、やさしい癒しを届けてくれます。
+                <div class="modal-text-en">A presence that softens the atmosphere just by quietly being there. She doesn't seek attention, but she is sensitive to the fluctuations of others' hearts, delivering a gentle healing that softly wraps around tired friends.</div>`,
                 story: `春の嵐の翌日、満開の桜の木の下で震えていたところを、やまととチロさんに見つけられました。最初は怯えていましたが、チロさんがくれた温かいミルクとやまとの励ましで心を開きました。\n「みんなを笑顔にする」ことが、自分を救ってくれた二人への恩返しだと思っています。
                 <div class="modal-text-en">Found shivering under a cherry blossom tree after a spring storm. Initially scared, she opened her heart thanks to warm milk from Chiro-san and encouragement from Yamato. She wants to make everyone smile to repay their kindness.</div>`,
                 likes: `団扇、歌を歌うこと、日向ぼっこ
