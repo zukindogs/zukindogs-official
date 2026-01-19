@@ -187,12 +187,13 @@
             margin-bottom: 30px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             border-bottom: 2px solid #eee; padding-bottom: 10px; 
         }
-        
-        /* ストーリーアイコン（画像）のスタイル */
+
+        /* アイコン画像のスタイルを確実に定義 */
         .story-icon {
-            width: 30px; /* 文字サイズに合わせる */
+            width: 40px; /* 少し大きめに */
             height: auto;
             object-fit: contain;
+            display: block;
         }
 
         .story-section p { max-width: 800px; margin: 0 auto 1.5em; text-align: justify; text-align-last: center; }
@@ -366,9 +367,9 @@
 
         <!-- Story -->
         <section class="story-section scroll-reveal">
-            <!-- 絵文字 📖 を画像に変更 -->
+            <!-- 修正箇所：画像タグを使用 -->
             <h2 class="story-heading">
-                <img src="story_icon.png" alt="" class="story-icon"> 
+                <img src="story_icon.png" alt="Icon" class="story-icon"> 
                 Our Story
             </h2>
             <p>ZUKINDOGSのリーダー「やまと」は、最愛の柴犬・チロさんがシニア期に入った頃に誕生しました。老いていく愛犬の姿と、忍者の力強さを掛け合わせ、「完璧ではないけれど、一生懸命で愛おしい」唯一無二のキャラクターを目指しました。</p>
